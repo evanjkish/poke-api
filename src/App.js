@@ -1,14 +1,15 @@
 import React, {useState} from 'react'
 import './App.css';
+import axios from 'axios';
 
 function App() {
 
   const [pokeBois, setPokeBois] = useState([])
 
   const fetchPoke = () => {
-      fetch("https://pokeapi.co/api/v2/pokemon?limit=807")
+      axios.get("https://pokeapi.co/api/v2/pokemon?limit=807")
         .then(response => {
-          return response.json();
+          return response.data;
       }).then(response2 => {
           console.log(response2.results);
           setPokeBois(response2.results)
